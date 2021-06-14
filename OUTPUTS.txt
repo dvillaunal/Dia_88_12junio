@@ -1,0 +1,60 @@
+    metodo_A         metodo_B        diferencia         media       
+ Min.   :   1.0   Min.   :   8.0   Min.   :-88.00   Min.   :  4.50  
+ 1st Qu.:  62.5   1st Qu.:  63.5   1st Qu.:-51.00   1st Qu.: 65.75  
+ Median : 275.0   Median : 297.5   Median :-27.00   Median :298.75  
+ Mean   : 364.2   Mean   : 391.4   Mean   :-27.17   Mean   :377.78  
+ 3rd Qu.: 637.5   3rd Qu.: 715.5   3rd Qu.: -4.75   3rd Qu.:676.50  
+ Max.   :1000.0   Max.   :1001.0   Max.   : 40.00   Max.   :980.00  
+   porcentaje      
+ Min.   :-155.556  
+ 1st Qu.: -18.594  
+ Median :  -8.579  
+ Mean   : -17.400  
+ 3rd Qu.:  -3.420  
+ Max.   :  25.352  
+null device 
+          1 
+
+	Pearson's product-moment correlation
+
+data:  datos$metodo_A and datos$metodo_B
+t = 57.561, df = 28, p-value < 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.9910929 0.9980231
+sample estimates:
+      cor 
+0.9958011 
+
+
+Call:
+lm(formula = metodo_B ~ metodo_A, data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-93.615 -11.908   0.052  12.314  55.504 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  12.0163     8.8667   1.355    0.186    
+metodo_A      1.0416     0.0181  57.561   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 32.49 on 28 degrees of freedom
+Multiple R-squared:  0.9916,	Adjusted R-squared:  0.9913 
+F-statistic:  3313 on 1 and 28 DF,  p-value: < 2.2e-16
+
+                2.5 %    97.5 %
+(Intercept) -6.146185 30.178863
+metodo_A     1.004532  1.078666
+[1] "Para obtener el dato, podemos hacerlo de dos maneras:\n1. Manual\n2. Automatico"
+null device 
+          1 
+[1] "En este ejemplo, el bias entre métodos es de -27.17 unidades, lo que significa que en promedio el método B mide 27.17 unidades más que el método A (24/30 = 80% de los datos se sitúan por debajo de 0). Además, este sesgo negativo parece deberse a medidas por encima de las 200 unidades, puesto que, para unidades medias menores a 200, los datos parecen encontrarse más próximos entre sí y más próximos a una diferencia media de cero."
+null device 
+          1 
+[1] 37.46274
+null device 
+          1 
+[1] -17.3999
