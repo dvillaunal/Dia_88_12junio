@@ -1,28 +1,17 @@
-```{r, eval=FALSE, include=TRUE}
-"Protocolo:
- 
- 1. Daniel Felipe Villa Rengifo
- 
- 2. Lenguaje: R
- 
- 3. Tema: ANÁLISIS GRÁFICO DE BLAND-ALTMAN EN R
- 
- 4. Fuentes:  
-    https://cran.r-project.org/web/packages/BlandAltmanLeh/vignettes/Intro.html"
-```
+## ---- eval=FALSE, include=TRUE-------------------------------------------------------
+## "Protocolo:
+## 
+##  1. Daniel Felipe Villa Rengifo
+## 
+##  2. Lenguaje: R
+## 
+##  3. Tema: ANÁLISIS GRÁFICO DE BLAND-ALTMAN EN R
+## 
+##  4. Fuentes:
+##     https://cran.r-project.org/web/packages/BlandAltmanLeh/vignettes/Intro.html"
 
 
-# ANÁLISIS GRÁFICO DE BLAND-ALTMAN
-
-El método de Bland-Altman es un método gráfico que permite comparar dos técnicas de medición sobre una misma variable cuantitativa. Es aplicable, por ejemplo, a casos en los que se requiere medir la diferencia entre un nuevo método con respecto a uno ya establecido o validado, y así poder validar o no el nuevo en función de si resulta fiable y reproducible para el uso previsto. Para ello, el método de Bland-Altman cuantifica la diferencia media entre ambos métodos (bias o sesgo) y un rango de confianza, entre los cuales se espera que se incluyan el 95% de las diferencias entre una técnica de medida y la otra. El análisis de Bland-Altman también puede ser útil para evaluar la reproducibilidad de un solo método. El gráfico podría ser útil en este caso para determinar si la variabilidad o precisión del método en cuestión se relaciona con el tamaño de la característica que se está midiendo. En este caso particular, dado que se usa siempre el mismo método, el bias sería 0.
-
-Para determinar si ambos métodos pueden usarse indistintamente, han de establecerse a priori los límites de las diferencias máximas aceptables en base a criterios biológicos/analíticos.
-
-# Ejercicio:
-
-Para el presente ejemplo se emplea un set de datos hipotético obtenido (una idea) de la fuente dada para evaluar la concordancia entre un método A y un método B, con 30 observaciones cada uno.
-
-```{r}
+## ------------------------------------------------------------------------------------
 ## Creamos el archivo de los outputs
 sink(file = "OUTPUTS.txt")
 
@@ -51,11 +40,9 @@ datos <- data.frame(metodo_A, metodo_B, diferencia, media, porcentaje)
 
 ## Creamos unos estadisticos de la base de datos
 summary(datos)
-```
 
-Análisis gráfico de los datos.
 
-```{r}
+## ------------------------------------------------------------------------------------
 #Como primer paso, inspeccionamos nuestros datos mediante la representación de un diagrama de dispersión:
 library(ggplot2)
 
@@ -97,11 +84,9 @@ confint(modelo_lineal, level = 0.95)
 # la recta de regresión y=1.04x+12.02 tiene una pendiente de 1.04, lo cual podría evaluarse como una buena concordancia entre métodos. En este caso la pendiente indica que el método B sobreestima al A. Además, los datos muestran una dispersión muy cercana a la bisectriz (pero no sobre ella), lo cual también sugiere la existencia de un pequeño nivel de discrepancia entre los métodos.
 
 
-```
 
-## Obtención del gráfico Bland-Altman.
 
-```{r}
+## ------------------------------------------------------------------------------------
 # Obtención del gráfico Bland-Altman.
 "Para obtener el dato, podemos hacerlo de dos maneras:
 1. Manual
@@ -168,10 +153,9 @@ LoA_inferior <- bias - 1.96 * sd
 
 error <- (LoA_superior - LoA_inferior)/mean(metodo_A) * 100
 print(error)
-```
 
 
-```{r}
+## ------------------------------------------------------------------------------------
 #También sería útil en este caso representar un gráfico utilizando el porcentaje de las diferencias:
 
 png(filename = "PorcentajeDiferencia.png")
@@ -208,4 +192,3 @@ mean(datos$porcentaje)
 
 # Guardamos los OUTPUTS:
 sink()
-```
